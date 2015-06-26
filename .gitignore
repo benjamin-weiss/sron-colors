@@ -1,3 +1,7 @@
+## My custom ignores
+.temptex
+.texpadtmp
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof

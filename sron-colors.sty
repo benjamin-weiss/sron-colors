@@ -1,0 +1,311 @@
+%%
+%% This is file `sron-colors.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% sron-colors.dtx  (with options: `package')
+%% Copyright (C) 2015 by Benjamin Weiss <weissbenjamin@me.com>
+%% 
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%% 
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is Benjamin Weiss.
+%% 
+%% This work consists of the files sron-colors.dtx and sron-colors.ins
+%% and the derived file sron-colors.sty.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{sron-colors}
+    [2015/06/18 1.0.0 Color Schemes for Scientific Data]
+\RequirePackage{etoolbox}
+\RequirePackage{tikz}
+\RequirePackage{pgfplots}
+\RequirePackage{pgffor}
+\newcommand{\sroncreateplotcyclelist}[3]{
+  % check if key otherwise treat it like a macro list
+  \pgfkeysifdefined{#2}{
+    \pgfkeys{#2/.get = \@sron@list}
+  }{
+    \let\@sron@list#2
+  }
+
+  % create helper macro on
+  \def\@sron@tempcmd{ }
+  \foreach \drawtype in {#3} {
+    \global\eappto\@sron@tempcmd{\drawtype=\noexpand\color,}
+  }
+  % create custom
+  \def\@sron@temp{ }
+  \foreach \color in \@sron@list {
+    \ifx\color\@empty\else
+      \global\eappto\@sron@temp{{\@sron@tempcmd}, }
+    \fi
+  }
+  % create plot cyle list based on http://tex.stackexchange.com/a/14418/30195
+  \begingroup
+  \edef\@sron@createcyclelist{%
+    \noexpand\pgfplotscreateplotcyclelist{#1}{%
+      \unexpanded\expandafter{\@sron@temp}%
+    }%
+  }%
+  \expandafter
+  \endgroup\@sron@createcyclelist
+}
+\definecolor{palette1color0}{HTML}{4477AA}
+\definecolor{palette1color1}{HTML}{332288}
+\definecolor{palette1color2}{HTML}{6699CC}
+\definecolor{palette1color3}{HTML}{88CCEE}
+\definecolor{palette1color4}{HTML}{44AA99}
+\definecolor{palette1color5}{HTML}{117733}
+\definecolor{palette1color6}{HTML}{999933}
+\definecolor{palette1color7}{HTML}{DDCC77}
+\definecolor{palette1color8}{HTML}{661100}
+\definecolor{palette1color9}{HTML}{CC6677}
+\definecolor{palette1color10}{HTML}{AA4466}
+\definecolor{palette1color11}{HTML}{882255}
+\definecolor{palette1color12}{HTML}{AA4499}
+\pgfkeys{
+  /sron/palette 1/.cd,
+    cycle 1/.initial = {%
+      palette1color0,
+    },
+    cycle 2/.initial = {%
+      palette1color0,
+      palette1color9
+    },
+    cycle 3/.initial = {%
+      palette1color0,
+      palette1color7,
+      palette1color9,
+    },
+    cycle 4/.initial = {%
+      palette1color0,
+      palette1color5,
+      palette1color7,
+      palette1color9
+    },
+    cycle 5/.initial = {%
+      palette1color1,
+      palette1color3,
+      palette1color5,
+      palette1color7,
+      palette1color9,
+    },
+    cycle 6/.initial = {%
+      palette1color1,
+      palette1color3,
+      palette1color5,
+      palette1color7,
+      palette1color9,
+      palette1color12,
+    },
+    cycle 7/.initial = {%
+      palette1color1,
+      palette1color3,
+      palette1color4,
+      palette1color5,
+      palette1color7,
+      palette1color9,
+      palette1color12,
+    },
+    cycle 8/.initial = {%
+      palette1color1,
+      palette1color3,
+      palette1color4,
+      palette1color5,
+      palette1color6,
+      palette1color7,
+      palette1color9,
+      palette1color12,
+    },
+    cycle 9/.initial = {%
+      palette1color1,
+      palette1color3,
+      palette1color4,
+      palette1color5,
+      palette1color6,
+      palette1color7,
+      palette1color9,
+      palette1color11,
+      palette1color12,
+    },
+    cycle 10/.initial = {%
+      palette1color1,
+      palette1color3,
+      palette1color4,
+      palette1color5,
+      palette1color6,
+      palette1color7,
+      palette1color8,
+      palette1color9,
+      palette1color11
+      palette1color12,
+    },
+    cycle 11/.initial = {%
+      palette1color1,
+      palette1color2,
+      palette1color3,
+      palette1color4,
+      palette1color5,
+      palette1color6,
+      palette1color7,
+      palette1color8,
+      palette1color9,
+      palette1color11,
+      palette1color12,
+    },
+    cycle 12/.initial = {%
+      palette1color1,
+      palette1color2,
+      palette1color3,
+      palette1color4,
+      palette1color5,
+      palette1color6,
+      palette1color7,
+      palette1color8,
+      palette1color9,
+      palette1color10,
+      palette1color11,
+      palette1color12,
+    },
+}
+\sroncreateplotcyclelist{palette1cycle1}{/sron/palette 1/cycle 1}{color}
+\sroncreateplotcyclelist{palette1cycle2}{/sron/palette 1/cycle 2}{color}
+\sroncreateplotcyclelist{palette1cycle3}{/sron/palette 1/cycle 3}{color}
+\sroncreateplotcyclelist{palette1cycle4}{/sron/palette 1/cycle 4}{color}
+\sroncreateplotcyclelist{palette1cycle5}{/sron/palette 1/cycle 5}{color}
+\sroncreateplotcyclelist{palette1cycle6}{/sron/palette 1/cycle 6}{color}
+\sroncreateplotcyclelist{palette1cycle7}{/sron/palette 1/cycle 7}{color}
+\sroncreateplotcyclelist{palette1cycle8}{/sron/palette 1/cycle 8}{color}
+\sroncreateplotcyclelist{palette1cycle9}{/sron/palette 1/cycle 9}{color}
+\sroncreateplotcyclelist{palette1cycle10}{/sron/palette 1/cycle 10}{color}
+\sroncreateplotcyclelist{palette1cycle11}{/sron/palette 1/cycle 11}{color}
+\sroncreateplotcyclelist{palette1cycle12}{/sron/palette 1/cycle 12}{color}
+\sroncreateplotcyclelist{palette1cycle1bar}{/sron/palette 1/cycle 1}{draw,fill}
+\sroncreateplotcyclelist{palette1cycle2bar}{/sron/palette 1/cycle 2}{draw,fill}
+\sroncreateplotcyclelist{palette1cycle3bar}{/sron/palette 1/cycle 3}{draw,fill}
+\sroncreateplotcyclelist{palette1cycle4bar}{/sron/palette 1/cycle 4}{draw,fill}
+\sroncreateplotcyclelist{palette1cycle5bar}{/sron/palette 1/cycle 5}{draw,fill}
+\sroncreateplotcyclelist{palette1cycle6bar}{/sron/palette 1/cycle 6}{draw,fill}
+\sroncreateplotcyclelist{palette1cycle7bar}{/sron/palette 1/cycle 7}{draw,fill}
+\sroncreateplotcyclelist{palette1cycle8bar}{/sron/palette 1/cycle 8}{draw,fill}
+\sroncreateplotcyclelist{palette1cycle9bar}{/sron/palette 1/cycle 9}{draw,fill}
+\sroncreateplotcyclelist{palette1cycle10bar}{/sron/palette 1/cycle 10}{draw,fill}
+\sroncreateplotcyclelist{palette1cycle11bar}{/sron/palette 1/cycle 11}{draw,fill}
+\sroncreateplotcyclelist{palette1cycle12bar}{/sron/palette 1/cycle 12}{draw,fill}
+\definecolor{palette2color0light}{HTML}{77AADD}
+\definecolor{palette2color1light}{HTML}{77CCCC}
+\definecolor{palette2color2light}{HTML}{88CCAA}
+\definecolor{palette2color3light}{HTML}{DDDD77}
+\definecolor{palette2color4light}{HTML}{DDAA77}
+\definecolor{palette2color5light}{HTML}{DD7788}
+\definecolor{palette2color6light}{HTML}{CC99BB}
+\definecolor{palette2color0medium}{HTML}{4477AA}
+\definecolor{palette2color1medium}{HTML}{44AAAA}
+\definecolor{palette2color2medium}{HTML}{44AA77}
+\definecolor{palette2color3medium}{HTML}{AAAA44}
+\definecolor{palette2color4medium}{HTML}{AA7744}
+\definecolor{palette2color5medium}{HTML}{AA4455}
+\definecolor{palette2color6medium}{HTML}{AA4488}
+\definecolor{palette2color0dark}{HTML}{114477}
+\definecolor{palette2color1dark}{HTML}{117777}
+\definecolor{palette2color2dark}{HTML}{117744}
+\definecolor{palette2color3dark}{HTML}{777711}
+\definecolor{palette2color4dark}{HTML}{774411}
+\definecolor{palette2color5dark}{HTML}{771122}
+\definecolor{palette2color6dark}{HTML}{771155}
+\definecolor{colormapSeqpalcolor0}{HTML}{FFFFE5}
+\definecolor{colormapSeqpalcolor1}{HTML}{FFF7BC}
+\definecolor{colormapSeqpalcolor2}{HTML}{FEE391}
+\definecolor{colormapSeqpalcolor3}{HTML}{FEC44F}
+\definecolor{colormapSeqpalcolor4}{HTML}{FB9A29}
+\definecolor{colormapSeqpalcolor5}{HTML}{EC7014}
+\definecolor{colormapSeqpalcolor6}{HTML}{CC4C02}
+\definecolor{colormapSeqpalcolor7}{HTML}{993404}
+\definecolor{colormapSeqpalcolor8}{HTML}{662506}
+\pgfplotscreatecolormap{colormapSeq}{%
+  color(0cm)=(colormapSeqpalcolor0);
+  color(1cm)=(colormapSeqpalcolor1);
+  color(2cm)=(colormapSeqpalcolor2);
+  color(3cm)=(colormapSeqpalcolor3);
+  color(4cm)=(colormapSeqpalcolor4);
+  color(5cm)=(colormapSeqpalcolor5);
+  color(6cm)=(colormapSeqpalcolor6);
+  color(7cm)=(colormapSeqpalcolor7);
+  color(8cm)=(colormapSeqpalcolor8);
+}
+\pgfplotsset{
+  /pgfplots/colormap/colormapSeq/.style={
+    /pgfplots/colormap name = colormapSeq
+  }
+}
+\definecolor{colormapDivpalcolor0}{HTML}{3D52A1}
+\definecolor{colormapDivpalcolor1}{HTML}{3A89C9}
+\definecolor{colormapDivpalcolor2}{HTML}{77B7E5}
+\definecolor{colormapDivpalcolor3}{HTML}{B4DDF7}
+\definecolor{colormapDivpalcolor4}{HTML}{E6F5FE}
+\definecolor{colormapDivpalcolor5}{HTML}{FFFAD2}
+\definecolor{colormapDivpalcolor6}{HTML}{FFE3AA}
+\definecolor{colormapDivpalcolor7}{HTML}{F9BD7E}
+\definecolor{colormapDivpalcolor8}{HTML}{ED875E}
+\definecolor{colormapDivpalcolor9}{HTML}{D24D3E}
+\definecolor{colormapDivpalcolor10}{HTML}{AE1C3E}
+\pgfplotscreatecolormap{colormapDiv}{%
+  color(0cm)=(colormapDivpalcolor0);
+  color(1cm)=(colormapDivpalcolor1);
+  color(2cm)=(colormapDivpalcolor2);
+  color(3cm)=(colormapDivpalcolor3);
+  color(4cm)=(colormapDivpalcolor4);
+  color(5cm)=(colormapDivpalcolor5);
+  color(6cm)=(colormapDivpalcolor6);
+  color(7cm)=(colormapDivpalcolor7);
+  color(8cm)=(colormapDivpalcolor8);
+  color(9cm)=(colormapDivpalcolor9);
+  color(10cm)=(colormapDivpalcolor10);
+}
+\pgfplotsset{
+  /pgfplots/colormap/colormapDiv/.style={
+    /pgfplots/colormap name = colormapDiv
+  }
+}
+\definecolor{colormapRainpalcolor0}{HTML}{781C81}
+\definecolor{colormapRainpalcolor1}{HTML}{413B93}
+\definecolor{colormapRainpalcolor2}{HTML}{4065B1}
+\definecolor{colormapRainpalcolor3}{HTML}{488BC2}
+\definecolor{colormapRainpalcolor4}{HTML}{55A1B1}
+\definecolor{colormapRainpalcolor5}{HTML}{63AD99}
+\definecolor{colormapRainpalcolor6}{HTML}{7FB972}
+\definecolor{colormapRainpalcolor7}{HTML}{B5BD4C}
+\definecolor{colormapRainpalcolor8}{HTML}{D9AD3C}
+\definecolor{colormapRainpalcolor9}{HTML}{E68E34}
+\definecolor{colormapRainpalcolor10}{HTML}{E6642C}
+\definecolor{colormapRainpalcolor11}{HTML}{D92120}
+\pgfplotscreatecolormap{colormapRain}{%
+  color(0cm)=(colormapRainpalcolor0);
+  color(1cm)=(colormapRainpalcolor1);
+  color(2cm)=(colormapRainpalcolor2);
+  color(3cm)=(colormapRainpalcolor3);
+  color(4cm)=(colormapRainpalcolor4);
+  color(5cm)=(colormapRainpalcolor5);
+  color(6cm)=(colormapRainpalcolor6);
+  color(7cm)=(colormapRainpalcolor7);
+  color(8cm)=(colormapRainpalcolor8);
+  color(9cm)=(colormapRainpalcolor9);
+  color(10cm)=(colormapRainpalcolor10);
+  color(11cm)=(colormapRainpalcolor11);
+}
+\pgfplotsset{
+  /pgfplots/colormap/colormapRain/.style={
+    /pgfplots/colormap name = colormapRain
+  }
+}
+\endinput
+%%
+%% End of file `sron-colors.sty'.
